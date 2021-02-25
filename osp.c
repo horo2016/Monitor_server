@@ -23,6 +23,14 @@
 
 #define _T3MINUTES (3*1000000*60)
 SList DevSList;
+
+void send_databaseOnline(char *number,int sta)
+{
+   char tmpBuf[0xff]={0};
+   sprintf(tmpBuf,"curl -s -d \"prNumber=%s&prState=%d\"  -X POST \"http://www.woyilian.com/gps_car/Login/UpdateDeviceStatusFromApp\"",number,sta);
+   system(tmpBuf);
+}
+
 unsigned long getmillis()
 {
     struct timeval tv;
@@ -55,6 +63,7 @@ void offlineManage_handle(int *arg)
 							 printf("timediff %d %d \n",timediff,_T3MINUTES);
 							 if(timediff > _T3MINUTES)
 							 	{
+							 	    send_databaseOnline(p_mov->_devinfo.sn,0);
 								   SListErase(&DevSList, p_mov)	;
 							 }
 					         p_mov=p_mov->_PNext;

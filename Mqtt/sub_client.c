@@ -34,11 +34,7 @@ bool process_messages = true;
 int msg_count = 0;
 
 
-void send_databaseOnline()
-{
 
-  
-}
 void parse_cjson(char *a)
 {
 	PNode pCur  ;
@@ -71,8 +67,9 @@ void parse_cjson(char *a)
 			memcpy(devinfor_tmp.sn,sn->valuestring,16);
 			devinfor_tmp.timestamp = timestamp;
 			SListPushBack(&DevSList, cnt ,devinfor_tmp);
+			send_databaseOnline(sn->valuestring,1);
 			 printf("DevSList is：\n");
-				SListPrint(&DevSList);
+			 SListPrint(&DevSList);
 			cnt ++;
 	}
 
