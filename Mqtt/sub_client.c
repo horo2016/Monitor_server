@@ -64,8 +64,8 @@ void parse_cjson(char *a)
 			long long  timestamp = tv.tv_sec * 1000000 + tv.tv_usec;
 			DevInfo devinfor_tmp;
 			devinfor_tmp.id =cnt ;
-			memcpy(devinfor_tmp.sn,sn->valuestring,16);
-			devinfor_tmp.sn[16]="\0";
+			memset(devinfor_tmp.sn,0,17);
+			memcpy(devinfor_tmp.sn,sn->valuestring,17);
 			devinfor_tmp.timestamp = timestamp;
 			SListPushBack(&DevSList, cnt ,devinfor_tmp);
 			send_databaseOnline(sn->valuestring,1);

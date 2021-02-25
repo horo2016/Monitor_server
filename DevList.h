@@ -4,7 +4,7 @@
 typedef int SDataType;
 typedef struct{
 	int id;
-	char sn[16];
+	char sn[17];
 	long long timestamp;
 }DevInfo;
 //链表的节点
