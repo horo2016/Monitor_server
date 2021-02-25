@@ -28,6 +28,7 @@ void send_databaseOnline(char *number,int sta)
 {
    char tmpBuf[0xff]={0};
    sprintf(tmpBuf,"curl -s -d \"prNumber=%s&prState=%d\"  -X POST \"http://www.woyilian.com/gps_car/Login/UpdateDeviceStatusFromApp\"",number,sta);
+   printf("%s\n",tmpBuf);
    system(tmpBuf);
 }
 

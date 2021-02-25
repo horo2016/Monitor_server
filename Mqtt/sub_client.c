@@ -65,6 +65,7 @@ void parse_cjson(char *a)
 			DevInfo devinfor_tmp;
 			devinfor_tmp.id =cnt ;
 			memcpy(devinfor_tmp.sn,sn->valuestring,16);
+			devinfor_tmp.sn[16]="\0";
 			devinfor_tmp.timestamp = timestamp;
 			SListPushBack(&DevSList, cnt ,devinfor_tmp);
 			send_databaseOnline(sn->valuestring,1);
